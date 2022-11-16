@@ -37,7 +37,12 @@ public class Posicion {
 		}
 	}
 	
-	
+	public Posicion(int fila, char columna) {
+		
+		this.setColumna(columna);
+		this.setFila(fila);
+		
+	}
 	
 
 }
