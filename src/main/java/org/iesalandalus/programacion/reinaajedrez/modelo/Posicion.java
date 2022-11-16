@@ -78,7 +78,7 @@ public class Posicion {
 	
 	@Override
 	public String toString() {
-		return String.format("fila=valorFila, columna=valorColumna", fila, columna);
+		return String.format("fila= "+ fila+  " columna= "+ columna , fila, columna);
 	}
 
 }
