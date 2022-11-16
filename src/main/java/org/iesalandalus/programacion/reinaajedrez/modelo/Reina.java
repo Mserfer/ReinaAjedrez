@@ -8,6 +8,27 @@ public class Reina {
 	private Color color;
 	
 	
+	public void setColor(Color color) {
+		
+		if (color == null) {
+			throw new NullPointerException("El color del personaje no puede ser nulo.");
+		}
+		this.color = color;
+	}
+	
+	public Color getColor() {
+		
+		return color;
+	}
+	
+	public void setPosicion(Posicion posicion) {
+		
+		if (posicion == null) {
+			throw new NullPointerException("La posición del personaje no puede ser nula.");
+		}
+		this.posicion = posicion;
+	}
+	
 	
 	
 	
