@@ -5,6 +5,8 @@ public enum Color {
 	BLANCO,
 	NEGRO;
 	
+	private String cadenaAMostrar;
+	
 	
 	
 
