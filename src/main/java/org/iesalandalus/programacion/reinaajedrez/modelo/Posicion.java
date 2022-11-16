@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reinaajedrez.modelo;
 
+import java.util.Objects;
+
 public class Posicion {
 	
 	private int fila;
@@ -55,8 +57,23 @@ public class Posicion {
 		setColumna(posicion.getColumna());
 	}
 	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Posicion)) {
+			return false;
+		}
+		Posicion other = (Posicion) obj;
+		return fila == other.fila && columna == other.columna;
+	}
 	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fila, columna);
+	}
 	
 
 }
