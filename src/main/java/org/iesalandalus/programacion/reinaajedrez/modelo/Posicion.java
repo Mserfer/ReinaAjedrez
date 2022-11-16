@@ -75,5 +75,10 @@ public class Posicion {
 		return Objects.hash(fila, columna);
 	}
 	
+	
+	@Override
+	public String toString() {
+		return String.format("fila=valorFila, columna=valorColumna", fila, columna);
+	}
 
 }
