@@ -7,6 +7,19 @@ public class Posicion {
 	private int fila;
 	private char columna;
 	
+	public Posicion(int fila, char columna) {
+		
+		this.setColumna(columna);
+		this.setFila(fila);
+		
+	}
+	
+	public Posicion(Posicion posicion) {
+		
+		setFila(posicion.getFila());
+		setColumna(posicion.getColumna());
+	}
+	
 	public void setFila(int fila) {
 		
 		if(fila < 1 || fila > 8) {
@@ -14,11 +27,8 @@ public class Posicion {
 			throw new IllegalArgumentException("La filas deben tener un valor entre 1 y 8");
 			
 		}
-		else {
-			
 			this.fila = fila;
 		}
-	}
 	
 	public int getFila() {
 		
@@ -32,11 +42,9 @@ public class Posicion {
 			throw new IllegalArgumentException("Las columnas deben ser desde la 'a' a la 'h'");
 			
 		}
-		else {
-			
 			this.columna = columna;
 			
-		}
+	
 	}
 	
 	public char getColumna() {
@@ -44,18 +52,6 @@ public class Posicion {
 		return columna;
 	}
 	
-	public Posicion(int fila, char columna) {
-		
-		this.setColumna(columna);
-		this.setFila(fila);
-		
-	}
-	
-	public Posicion(Posicion posicion) {
-		
-		setFila(posicion.getFila());
-		setColumna(posicion.getColumna());
-	}
 	
 
 	@Override
@@ -78,7 +74,7 @@ public class Posicion {
 	
 	@Override
 	public String toString() {
-		return String.format("fila= "+ fila+  " columna= "+ columna , fila, columna);
+		return String.format("fila=%s, columna=%s ", fila, columna);
 	}
 
 }
