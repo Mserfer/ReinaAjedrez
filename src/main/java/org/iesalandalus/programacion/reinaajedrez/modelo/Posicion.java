@@ -9,22 +9,27 @@ public class Posicion {
 	
 	public Posicion(int fila, char columna) {
 		
-		this.setColumna(columna);
-		this.setFila(fila);
 		
+		setFila(fila);
+		setColumna(columna);
+
 	}
 	
 	public Posicion(Posicion posicion) {
 		
-		setFila(posicion.getFila());
-		setColumna(posicion.getColumna());
+		if(posicion == null) {
+			throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
+		}
+			
+			setFila(posicion.getFila());
+			setColumna(posicion.getColumna());
 	}
 	
-	public void setFila(int fila) {
+	private void setFila(int fila) {
 		
 		if(fila < 1 || fila > 8) {
 			
-			throw new IllegalArgumentException("La filas deben tener un valor entre 1 y 8");
+			throw new IllegalArgumentException("ERROR: Fila no válida.");
 			
 		}
 			this.fila = fila;
@@ -35,11 +40,11 @@ public class Posicion {
 		return fila;
 	}
 	
-	public void setColumna(char columna) {
+	private void setColumna(char columna) {
 		
 		if(columna < 'a'|| columna > 'h') {
 			
-			throw new IllegalArgumentException("Las columnas deben ser desde la 'a' a la 'h'");
+			throw new IllegalArgumentException("ERROR: Columna no válida.");
 			
 		}
 			this.columna = columna;
@@ -70,11 +75,18 @@ public class Posicion {
 	public int hashCode() {
 		return Objects.hash(fila, columna);
 	}
-	
-	
+
 	@Override
+	public String toString() {
+		return "fila=" + fila + ", columna=" + columna;
+	}
+	
+	
+	/*@Override
 	public String toString() {
 		return String.format("fila=%s, columna=%s ", fila, columna);
 	}
+	*/
+	
 
 }

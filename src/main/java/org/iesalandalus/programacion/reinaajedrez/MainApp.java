@@ -8,31 +8,51 @@ import org.iesalandalus.programacion.reinaajedrez.modelo.Reina;
 
 public class MainApp {
 	
-	private int numeroPasos;
-	Reina reina;
-	Consola consola;
-	Direccion direccion;
+	static Reina reina;
 	
-	private void ejecutarOpcion(int opcion) {
+	private static void ejecutarOpcion(int opcion) {
 		
-		consola.elegirOpcionMenu();
+		switch (opcion) {
+		case 1: 
+			crearReina();
+			break;
+		
+		case 2: 
+			crearReinaColor();
+			break;
+		case 3:
+			mover();
+			break;
+		case 4: 
+			Consola.despedirse();
+			break;
+		}
+		
 	}
 	
-	private void crearReina() {
+	private  static  void crearReina() {
 		
 		reina = new Reina();
 	}
 	
-	private void crearReinaColor(Color color) {
+	private static  void crearReinaColor() {
 		
-		reina = new Reina(color);
+		reina = new Reina(Consola.elegirColor());
 	}
 	
-	private void mover(){
+	private static  void mover(){
+		Direccion direccion;
+		int numeroPasos;
 		
-		consola.mostrarMenuDirecciones();
-		direccion = consola.elegirDireccion();
-		numeroPasos = consola.elegirPasos();
+		Consola.mostrarMenuDirecciones();
+		direccion = Consola.elegirDireccion();
+		numeroPasos = Consola.elegirPasos();
+		try {
+			reina.mover(direccion, numeroPasos);
+		} catch (OperationNotSupportedException e) {
+			
+			System.out.println(e.getMessage());
+		}
 		
 		
 		
@@ -41,9 +61,16 @@ public class MainApp {
 	
 	public static void main(String[] args) {
 		
-		MainApp app = new MainApp();
+		int opcion;
+		do {
+			
+			Consola.MostrarMenu();
+			opcion = Consola.elegirOpcionMenu();
+			
+			ejecutarOpcion(opcion);
+			
+		}while(opcion != 4);
 		
-		app.mover();
 		
 		
 		
